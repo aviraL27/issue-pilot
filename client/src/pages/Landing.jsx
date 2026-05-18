@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import AuthNav from '../components/AuthNav';
 import VerdictBadge from '../components/VerdictBadge';
 import { useRepo } from '../context/RepoContext';
 
@@ -24,7 +25,7 @@ export default function Landing() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
           <Link to="/" className="font-mono text-lg font-semibold">IssuePilot</Link>
           <div className="flex items-center gap-2">
-            <Link to="/login" className="rounded-badge border border-line px-3 py-1.5 text-sm font-medium hover:border-available">Login</Link>
+            <AuthNav />
           </div>
         </div>
       </nav>

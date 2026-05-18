@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { repoApi } from '../api/repoApi';
 import { issueApi } from '../api/issueApi';
 import TokenManager from '../components/TokenManager';
@@ -9,6 +9,7 @@ import { useRepo } from '../context/RepoContext';
 export default function Dashboard() {
   const { user, logout } = useAuth();
   const { reanalyze, loading } = useRepo();
+  const navigate = useNavigate();
   const [watchlist, setWatchlist] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
   const [repoUrl, setRepoUrl] = useState('');
@@ -28,6 +29,11 @@ export default function Dashboard() {
     setRepoUrl('');
   }
 
+  async function handleLogout() {
+    await logout();
+    navigate('/login');
+  }
+
   return (
     <main className="min-h-screen bg-white text-ink">
       <header className="glass sticky top-0 z-20 border-b border-line">
@@ -35,7 +41,7 @@ export default function Dashboard() {
           <Link to="/" className="font-mono text-base font-semibold">IssuePilot</Link>
           <div className="flex items-center gap-3">
             <Link to="/analyze" className="font-mono text-sm text-muted hover:text-ink">analyze</Link>
-            <button onClick={logout} className="rounded-badge border border-line px-3 py-1.5 font-mono text-xs hover:border-danger">logout</button>
+            <button onClick={handleLogout} className="rounded-badge border border-line px-3 py-1.5 font-mono text-xs hover:border-danger">logout</button>
           </div>
         </div>
       </header>

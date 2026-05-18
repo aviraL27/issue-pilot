@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ExternalLink, Star } from 'lucide-react';
 import { issueApi } from '../api/issueApi';
+import AuthNav from '../components/AuthNav';
 import CommentTemplateGenerator from '../components/CommentTemplateGenerator';
 import IssueSummaryModal from '../components/IssueSummaryModal';
 import VerdictBadge from '../components/VerdictBadge';
@@ -27,7 +28,10 @@ export default function IssueDetail() {
       <header className="glass sticky top-0 z-20 border-b border-line">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
           <Link to="/analyze" className="font-mono text-sm text-muted hover:text-ink">← analyze</Link>
-          <span className="font-mono text-sm text-muted">{owner}/{repo}#{number}</span>
+          <div className="flex items-center gap-3">
+            <span className="hidden font-mono text-sm text-muted sm:inline">{owner}/{repo}#{number}</span>
+            <AuthNav />
+          </div>
         </div>
       </header>
       <section className="mx-auto max-w-5xl space-y-4 px-4 py-8">
