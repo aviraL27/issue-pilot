@@ -6,7 +6,6 @@ import IssueCard from '../components/IssueCard';
 import ReanalyzeBar from '../components/ReanalyzeBar';
 import RepoHealthCard from '../components/RepoHealthCard';
 import { useRepo } from '../context/RepoContext';
-import DarkModeToggle from '../components/DarkModeToggle';
 
 export default function Analyze() {
   const { repoState, loading, error, toast, analyze, reanalyze } = useRepo();
@@ -54,7 +53,6 @@ export default function Analyze() {
             <button className="rounded-badge bg-ink px-3 py-1.5 font-mono text-xs text-white hover:bg-[#161B22]">analyze</button>
           </form>
           <RepoHealthCard health={repoState.health} compact />
-          <DarkModeToggle />
           <button onClick={() => setMobileFilters((value) => !value)} className="inline-flex items-center gap-2 rounded-badge border border-line px-3 py-2 font-mono text-xs md:hidden">
             <SlidersHorizontal size={14} /> filters
           </button>

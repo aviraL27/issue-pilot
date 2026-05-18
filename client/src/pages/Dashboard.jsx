@@ -5,7 +5,6 @@ import { issueApi } from '../api/issueApi';
 import TokenManager from '../components/TokenManager';
 import { useAuth } from '../context/AuthContext';
 import { useRepo } from '../context/RepoContext';
-import DarkModeToggle from '../components/DarkModeToggle';
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
@@ -35,7 +34,6 @@ export default function Dashboard() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
           <Link to="/" className="font-mono text-base font-semibold">IssuePilot</Link>
           <div className="flex items-center gap-3">
-            <DarkModeToggle />
             <Link to="/analyze" className="font-mono text-sm text-muted hover:text-ink">analyze</Link>
             <button onClick={logout} className="rounded-badge border border-line px-3 py-1.5 font-mono text-xs hover:border-danger">logout</button>
           </div>
