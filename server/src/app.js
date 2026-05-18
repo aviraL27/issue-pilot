@@ -15,7 +15,12 @@ const allowedOrigins = (process.env.CLIENT_ORIGIN || (process.env.NODE_ENV === '
   .map((origin) => origin.trim())
   .filter(Boolean);
 
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+    crossOriginResourcePolicy: { policy: 'cross-origin' }
+  })
+);
 app.use(
   cors({
     origin(origin, callback) {
